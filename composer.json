@@ -1,0 +1,25 @@
+{
+    "name": "klsoft/yii3-doctrine",
+    "type": "library",
+    "description": "The package provides an easy way to integrate the Yii 3 framework with the Doctrine ORM",
+    "homepage": "https://github.com/klsoft-web/yii3-doctrine",
+    "keywords": [
+        "orm",
+        "doctrine",
+        "yii3"
+    ],
+    "license": "MIT",
+    "require": {
+        "doctrine/orm": "^3",
+        "doctrine/dbal": "^4",
+        "symfony/cache": "^7"
+    },
+    "extra": {
+        "config-plugin-options": {
+            "source-directory": "config"
+        },
+        "config-plugin": {
+            "params": "params.php"
+        }
+    }
+}

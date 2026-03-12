@@ -7,7 +7,8 @@ See also:
 - [YII3-CACHE-DOCTRINE](https://github.com/klsoft-web/yii3-cache-doctrine) - The package provides the [PSR-16](https://www.php-fig.org/psr/psr-16/) cache using the [Doctrine ORM](https://www.doctrine-project.org/)
 - [YII3-RBAC-DOCTRINE](https://github.com/klsoft-web/yii3-rbac-doctrine) - The package provides [Yii RBAC](https://github.com/yiisoft/rbac) storage using the [Doctrine ORM](https://www.doctrine-project.org/)
 - [YII3-DATAREADER-DOCTRINE](https://github.com/klsoft-web/yii3-datareader-doctrine) - The package provides a [Yii 3 data reader](https://github.com/yiisoft/data?tab=readme-ov-file#reading-data) that uses the [Doctrine ORM](https://www.doctrine-project.org/)
-- [YII3-DOCTRINE-APP](https://github.com/klsoft-web/yii3-doctrine-app) - [Yii 3](https://yii3.yiiframework.com) web application template that supports [Doctrine ORM](https://www.doctrine-project.org/)
+- [YII3-DOCTRINE-APP](https://github.com/klsoft-web/yii3-doctrine-app)  - A [Yii 3](https://yii3.yiiframework.com) web application template that supports the [Doctrine ORM](https://www.doctrine-project.org/) 
+-  [YII3-CMS](https://github.com/klsoft-web/yii3-cms) - A content management system based on the [Yii 3 framework](https://yii3.yiiframework.com) and uses the [Doctrine ORM](https://www.doctrine-project.org/)
 
 ## Requirement
 

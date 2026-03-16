@@ -31,7 +31,7 @@ return [
     // ...
     'doctrine' => [
         'paths' =>  [__DIR__ . '/../../src/Data/Entities'],
-        'isDevMode' => true,
+        'isDevMode' => false,
         'connection' => [
             'driver'   => 'pdo_mysql',
             'user'     => 'mydb',
@@ -52,14 +52,19 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Console\EntityManagerProvider;
 use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
+use Psr\Cache\CacheItemPoolInterface;
 use Psr\Container\ContainerInterface;
+use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
 return [
     // ...
-    Configuration::class => ORMSetup::createAttributeMetadataConfiguration(
-        paths: $params['doctrine']['paths'],
-        isDevMode: $params['doctrine']['isDevMode']
-    ),
+    CacheItemPoolInterface::class => ArrayAdapter::class,
+    Configuration::class => static function (ContainerInterface $container) use ($params) {
+        return ORMSetup::createAttributeMetadataConfiguration(
+            paths: $params['doctrine']['paths'],
+            isDevMode: $params['doctrine']['isDevMode'],
+            cache: $container->get(CacheItemPoolInterface::class));
+    },
     EntityManagerInterface::class => static function (ContainerInterface $container) use ($params) {
         $configuration = $container->get(Configuration::class);
         return new EntityManager(

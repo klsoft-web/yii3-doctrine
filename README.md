@@ -60,10 +60,12 @@ return [
     // ...
     CacheItemPoolInterface::class => ArrayAdapter::class,
     Configuration::class => static function (ContainerInterface $container) use ($params) {
-        return ORMSetup::createAttributeMetadataConfiguration(
+        $config = ORMSetup::createAttributeMetadataConfiguration(
             paths: $params['doctrine']['paths'],
             isDevMode: $params['doctrine']['isDevMode'],
             cache: $container->get(CacheItemPoolInterface::class));
+        $config->setAutoGenerateProxyClasses(true);
+        return $config;
     },
     EntityManagerInterface::class => static function (ContainerInterface $container) use ($params) {
         $configuration = $container->get(Configuration::class);

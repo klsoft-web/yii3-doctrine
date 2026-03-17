@@ -55,6 +55,7 @@ use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
+use Doctrine\ORM\Proxy\ProxyFactory;
 
 return [
     // ...
@@ -64,7 +65,7 @@ return [
             paths: $params['doctrine']['paths'],
             isDevMode: $params['doctrine']['isDevMode'],
             cache: $container->get(CacheItemPoolInterface::class));
-        $config->setAutoGenerateProxyClasses(true);
+        $config->setAutoGenerateProxyClasses(ProxyFactory::AUTOGENERATE_FILE_NOT_EXISTS_OR_CHANGED);
         return $config;
     },
     EntityManagerInterface::class => static function (ContainerInterface $container) use ($params) {

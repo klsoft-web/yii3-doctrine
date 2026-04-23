@@ -86,7 +86,7 @@ return [
 Example:
 
 ```bash
-APP_ENV=dev ./yii doctrine:orm:schema-tool:create
+./yii doctrine:orm:schema-tool:create
 ```
 
 The following commands are currently available:

@@ -84,7 +84,6 @@ return [
 ### 2. Run the Doctrine console command.
 
 Example:
-
 ```bash
 ./yii doctrine:orm:schema-tool:create
 ```
@@ -94,15 +93,20 @@ The following commands are currently available:
 - doctrine:orm:schema-tool:create
 - doctrine:orm:schema-tool:drop
 - doctrine:orm:schema-tool:update
-- doctrine:orm:clear-cache:metadata
 - doctrine:orm:validate-schema
 - doctrine:orm:mapping-describe
+- doctrine:orm:generate-proxies
 - doctrine:orm:run-dql
 - doctrine:orm:info
-- doctrine:orm:generate-proxies
+- doctrine:orm:clear-cache:metadata
 - doctrine:orm:clear-cache:query
 - doctrine:orm:clear-cache:result
 - doctrine:dbal:run-sql
+
+Display help for a command:
+```bash
+./yii <command> --help
+```
 
 ### 3. Inject the EntityManagerInterface.
 

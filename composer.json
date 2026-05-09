@@ -19,7 +19,7 @@
             "source-directory": "config"
         },
         "config-plugin": {
-            "params": "params.php"
+            "params-console": "params-console.php"
         }
     }
 }

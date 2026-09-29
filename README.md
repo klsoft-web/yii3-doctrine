@@ -45,6 +45,8 @@ return [
 Register the Doctrine dependencies in the `config/common/di/application.php`:
 
 ```php
+use Doctrine\DBAL\Tools\Console\ConnectionProvider;
+use Doctrine\DBAL\Tools\Console\ConnectionProvider\SingleConnectionProvider;
 use Doctrine\ORM\ORMSetup;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\Configuration;
@@ -78,6 +80,15 @@ return [
             $configuration);
     },
     EntityManagerProvider::class => SingleManagerProvider::class,
+    ConnectionProvider::class => static function (ContainerInterface $container) use ($params) {
+        $configuration = $container->get(Configuration::class);
+        return new SingleConnectionProvider(
+            DriverManager::getConnection(
+                $params['doctrine']['connection'],
+                $configuration
+            )
+        );
+    },
 ];
 ```
 

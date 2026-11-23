@@ -68,6 +68,7 @@ return [
             isDevMode: $params['doctrine']['isDevMode'],
             cache: $container->get(CacheItemPoolInterface::class));
         $config->setAutoGenerateProxyClasses(ProxyFactory::AUTOGENERATE_FILE_NOT_EXISTS_OR_CHANGED);
+        //$config->enableNativeLazyObjects(true);  // on PHP >= 8.4
         return $config;
     },
     EntityManagerInterface::class => static function (ContainerInterface $container) use ($params) {

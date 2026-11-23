@@ -63,12 +63,12 @@ return [
     // ...
     CacheItemPoolInterface::class => ArrayAdapter::class, //One of the following adapters should be used instead: Psr16Adapter, RedisAdapter, MemcachedAdapter, DoctrineDbalAdapter, FilesystemAdapter and so forth.
     Configuration::class => static function (ContainerInterface $container) use ($params) {
-        $config = ORMSetup::createAttributeMetadataConfiguration( // on PHP >= 8.4, use ORMSetup::createAttributeMetadataConfig()
+        $config = ORMSetup::createAttributeMetadataConfig( // on PHP < 8.4, use ORMSetup::createAttributeMetadataConfiguration()
             paths: $params['doctrine']['paths'],
             isDevMode: $params['doctrine']['isDevMode'],
             cache: $container->get(CacheItemPoolInterface::class));
         $config->setAutoGenerateProxyClasses(ProxyFactory::AUTOGENERATE_FILE_NOT_EXISTS_OR_CHANGED);
-        //$config->enableNativeLazyObjects(true);  // on PHP >= 8.4
+        $config->enableNativeLazyObjects(true);  // on PHP >= 8.4
         return $config;
     },
     EntityManagerInterface::class => static function (ContainerInterface $container) use ($params) {
